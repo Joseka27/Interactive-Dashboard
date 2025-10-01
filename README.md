@@ -38,6 +38,8 @@ El dashboard permite explorar precios, filtrar por año y mes, y visualizar mét
     https://www.kaggle.com/datasets/imranbukhari/comprehensive-xrpusd-1m-data
 ```
 
+Una vez instalado crea una carpeta llamada dataset y mete el .csv dentro
+
 3. Descargar Requisitos (En terminal):
 
 ```sh
