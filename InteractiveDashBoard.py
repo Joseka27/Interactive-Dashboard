@@ -1,6 +1,7 @@
 #Importar librerias
 from CleanData import dataframe #importar el dataframe limpio
 import streamlit as st
+from datetime import date
 
 df = dataframe()
 
@@ -30,17 +31,12 @@ bottom_left_cell = cols[0].container(
 )
 
 #Diccionarios para los botones de Año
-Year_select = {
-    "Todos": "All",
-    "2018": "2018",
-    "2019": "2019",
-    "2020": "2020",
-    "2021": "2021",
-    "2022": "2022",
-    "2023": "2023",
-    "2024": "2024",
-    "2025": "2025",
-}
+Actual_Date = date.today()
+Actual_Year = Actual_Date.year
+
+Year_select = {}
+for year in range(Actual_Year - 10, Actual_Year + 1):
+    Year_select[str(year)] = str(year)
 #Diccionario para el selector de Mes
 Month_select = {
     "Enero": '01',
@@ -76,7 +72,7 @@ with top_left_cell: #Esta linea acomoda en el contenedor
 
 #Realizar una copia del dataframe para filtrar por año y mes
 df_filtered = df.copy()
-if year and year != "Todos":  # verificamos que year tenga valor
+if year and year != "Todos":  # verificar que año tenga valor
     df_filtered = df_filtered[df_filtered["Open_time"].dt.year == int(year)]
 if months:
     selected_months = [int(Month_select[m]) for m in months]
